@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        
+        <script>
+            $(document).ready(function() {
+                var getSystem = true;
+
+                $.post('backend.php',{getSystem},function(data){
+                    $("#system").html(data);
+                });
+
+                $("#system").on('change',function(){
+                    
+                    var system = $(this).val();
+
+                    $.post('backend.php',{system},function(data){
+                        $("#item").html(data);
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <select id='system' name='system'>
+            <option value = '#'>Select System</option>
+        </select>
+
+        <select id='item' name='item'>
+            <option value='#'>Select Item</option>
+        </select>
+
+    </body>
+</html>
